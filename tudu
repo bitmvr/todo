@@ -58,7 +58,7 @@ do
     ;;
     
     *)
-      echo "Unkown Usage"
+      echo "Invalid Argument"
       print_usage
       exit
     ;;
