@@ -37,16 +37,17 @@ do
     -a|--add)
       list_item="$*"
       add_item
+      shift
     ;;
     
     -i|--init)
       create_list
-      shift # past argument
+      shift
     ;;
     
     -d|--delete)
       delete_list_item
-      shift # past argument
+      shift
     ;;
     
     -l|--list)
@@ -57,11 +58,9 @@ do
     *)
       echo "Unkown Usage"
       print_usage
+      shift
     ;;
 
   esac
 
-  shift # past argument or value
-
 done
-
