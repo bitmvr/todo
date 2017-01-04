@@ -41,11 +41,6 @@ do
       exit
     ;;
     
-    -i|--init)
-      create_list
-      exit
-    ;;
-    
     -d|--delete)
       line_num="${2}"
       delete_list_item
