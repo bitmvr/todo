@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+list_file='list.tudu'
+
+function print_usage {
+  echo "$(basename "$0") [ --add | --delete | --list ]"
+}
+
+function add_item {
+  echo "${list_item}" >> "${list_file}"
+}
+
+function create_list {
+  touch "${list_file}"
+}
+
+function delete_list_item {
+  sed -i '' "${1}d" "${list_file}"
+}
+
+function read_list {
+  line_num=1
+  while IFS='' read -r line; do
+    echo "${line_num}. ${line}"
+    line_num=$((line_num + 1))
+  done < "${list_file}"
+}
+
+
+while [[ $# -gt 1 ]]
+do
+
+  key="$1"
+
+  case $key in
+    
+    -a|--add)
+      list_item="$*"
+      add_item
+    ;;
+    
+    -i|--init)
+      create_list
+      shift # past argument
+    ;;
+    
+    -d|--delete)
+      delete_list_item
+      shift # past argument
+    ;;
+    
+    -l|--list)
+      read_list
+      shift 
+    ;;
+    
+    *)
+      echo "Unkown Usage"
+      print_usage
+    ;;
+
+  esac
+
+  shift # past argument or value
+
+done
+
