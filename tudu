@@ -27,7 +27,7 @@ function read_list {
 }
 
 
-while [[ $# -gt 1 ]]
+while [[ $# -gt 0 ]]
 do
 
   key="$1"
@@ -35,30 +35,31 @@ do
   case $key in
     
     -a|--add)
+      shift
       list_item="$*"
       add_item
-      shift
+      exit
     ;;
     
     -i|--init)
       create_list
-      shift
+      exit
     ;;
     
     -d|--delete)
       delete_list_item
-      shift
+      exit
     ;;
     
     -l|--list)
       read_list
-      shift 
+      exit
     ;;
     
     *)
       echo "Unkown Usage"
       print_usage
-      shift
+      exit
     ;;
 
   esac
