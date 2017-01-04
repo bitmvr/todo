@@ -15,7 +15,7 @@ function create_list {
 }
 
 function delete_list_item {
-  sed -i '' "${1}d" "${list_file}"
+  sed -i '' "${line_num}d" "${list_file}"
 }
 
 function read_list {
@@ -30,9 +30,9 @@ function read_list {
 while [[ $# -gt 0 ]]
 do
 
-  key="$1"
+  key="${1}"
 
-  case $key in
+  case "${key}" in
     
     -a|--add)
       shift
@@ -47,6 +47,7 @@ do
     ;;
     
     -d|--delete)
+      line_num="${2}"
       delete_list_item
       exit
     ;;
