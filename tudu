@@ -27,6 +27,10 @@ function read_list {
 }
 
 
+if [[ $# -eq 0 ]]; then
+  print_usage
+fi
+
 while [[ $# -gt 0 ]]
 do
 
