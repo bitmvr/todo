@@ -3,7 +3,7 @@
 list_file='list.tudu'
 
 function print_usage {
-  echo "$(basename "$0") [ --add | --delete | --list ]"
+  echo "$(basename "$0") [ --add | --delete | --list | --help ]"
 }
 
 function add_item {
@@ -52,6 +52,11 @@ do
       exit
     ;;
     
+    -h|--help)
+      print_usage
+      exit
+    ;;
+
     *)
       echo "Invalid Argument"
       print_usage
