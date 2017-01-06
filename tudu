@@ -16,7 +16,6 @@ function add_item {
 }
 
 function create_list {
-  create_list_dir
   touch "${list_file}"
 }
 
@@ -34,6 +33,10 @@ function read_list {
 
 if [[ $# -eq 0 ]]; then
   print_usage
+fi
+
+if [ ! -d "${list_dir}" ]; then
+  create_list_dir
 fi
 
 while [[ $# -gt 0 ]]
