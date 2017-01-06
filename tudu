@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-list_file='list.tudu'
+list_dir='/usr/local/etc/'
+list_file="${list_dir}/list.tudu"
+
+function create_list_dir {
+  mkdir -p "${list_dir}"
+}
 
 function print_usage {
   echo "$(basename "$0") [ --add | --delete | --list | --help ]"
@@ -11,6 +16,7 @@ function add_item {
 }
 
 function create_list {
+  create_list_dir
   touch "${list_file}"
 }
 
@@ -25,7 +31,6 @@ function read_list {
     line_num=$((line_num + 1))
   done < "${list_file}"
 }
-
 
 if [[ $# -eq 0 ]]; then
   print_usage
