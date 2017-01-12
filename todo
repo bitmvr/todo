@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-list_dir='/usr/local/etc/tudu/'
-list_file="${list_dir}/tudo.list"
+list_dir='/usr/local/etc/todo/'
+list_file="${list_dir}/todo.list"
 
 function create_list_dir {
   mkdir -p "${list_dir}"
