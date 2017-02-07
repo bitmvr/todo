@@ -54,6 +54,12 @@ do
     ;;
     
     -d|--delete)
+      
+      if [ -z "$2" ]; then
+        echo "Line number required in order to execute a delete"
+        exit
+      fi
+      
       line_num="${2}"
       delete_list_item
       exit
